@@ -1,4 +1,4 @@
-//insertion sort in c program ascending order...
+//insertion sort in c program descending order...
 
 #include <stdio.h>
 
@@ -8,11 +8,11 @@ void insertion_sort(int ara[], int n){
         item = ara[i];
 
         j = i - 1;
-        while(j >= 0 && ara[j] > item){
+        while(j >= 0 && ara[j] < item){
             ara[j + 1] = ara[j];
             j = j - 1;
         }
-        ara[j + 1] =item;
+        ara[j + 1] = item;
     }
 
     for(int i = 0; i < n; i++){
