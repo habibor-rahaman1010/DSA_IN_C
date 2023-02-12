@@ -50,7 +50,6 @@ int main() {
     push(&st, 30);
     push(&st, 40);
 
-    pop(&st);
     printf("%d", top(&st));
 
 return 0;
