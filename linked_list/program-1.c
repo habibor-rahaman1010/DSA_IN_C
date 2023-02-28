@@ -57,10 +57,10 @@ int Search(Node *head, int item){
 }
 
 //remove node in linked list...
-int remove_node(Node *head, Node *node) {
+Node *remove_node(Node *head, Node *node) {
     if(node == head){
         head = node->next;
-        fread(node);
+        free(node);
         return head;
     }
 
@@ -76,7 +76,7 @@ int remove_node(Node *head, Node *node) {
         current_node = current_node->next;
     }
     current_node->next = node->next;
-    fread(node);
+    free(node);
     return head;
 }
 
@@ -108,12 +108,13 @@ int main() {
     head = prepend(head, 30);
     head = append(head, 40);
 
+    head = remove_node(head, head->next);
 
     print_linked_list(head);
     printf("\n");
     printf("Total Nodes: %d ", nodeCount(head));
     printf("\n");
-    printf("Find item in node: %d ", Search(head, 300));
+    printf("Find item in node: %d ", Search(head, 20));
 
 return 0;
 }
