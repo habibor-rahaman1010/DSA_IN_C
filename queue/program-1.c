@@ -7,7 +7,6 @@ typedef struct{
     int data[Q_size + 1];
     int head;
     int tail;
-
 }Queue;
 
 void enqueue(Queue *q, int item){
