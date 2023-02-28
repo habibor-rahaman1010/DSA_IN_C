@@ -56,6 +56,12 @@ int Search(Node *head, int item){
     return -1;
 }
 
+//insert a node anywhere in linked list...
+void Insert_Node(Node *node, int item){
+    Node *new_node = createNewNode(item, node->next);
+    node->next = new_node;
+}
+
 //remove node in linked list...
 Node *remove_node(Node *head, Node *node) {
     if(node == head){
@@ -109,6 +115,7 @@ int main() {
     head = append(head, 40);
 
     head = remove_node(head, head->next);
+    Insert_Node(head->next, 100);
 
     print_linked_list(head);
     printf("\n");
