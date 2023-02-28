@@ -58,6 +58,11 @@ int Search(Node *head, int item){
 
 //insert a node anywhere in linked list...
 void Insert_Node(Node *node, int item){
+    if(node == NULL){
+       printf("Error! Node is NULL.\n");
+        return;
+    }
+
     Node *new_node = createNewNode(item, node->next);
     node->next = new_node;
 }
@@ -115,7 +120,8 @@ int main() {
     head = append(head, 40);
 
     head = remove_node(head, head->next);
-    Insert_Node(head->next, 100);
+    Insert_Node(head, 100);
+    head = append(head, 75);
 
     print_linked_list(head);
     printf("\n");
