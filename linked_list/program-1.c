@@ -41,6 +41,21 @@ Node *append(Node *head, int item){
     return head;
 }
 
+//search data in linked list...
+int Search(Node *head, int item){
+    int findeNode = 0;
+    Node *a = head;
+    while(a != NULL){
+        if(a->data == item){
+            return findeNode;
+            break;
+        }
+        findeNode++;
+        a = a->next;
+    }
+    return -1;
+}
+
 //node count function in linked list
 int nodeCount(Node *head){
     Node *current_Node = head;
@@ -65,12 +80,16 @@ int main() {
     Node *head;
     head = createNewNode(10, NULL);
     head = prepend(head, 20);
+    head = prepend(head, 50);
+    head = prepend(head, 30);
     head = append(head, 40);
 
 
     print_linked_list(head);
     printf("\n");
     printf("Total Nodes: %d ", nodeCount(head));
+    printf("\n");
+    printf("Search item: %d ", Search(head, 40));
 
 return 0;
 }
