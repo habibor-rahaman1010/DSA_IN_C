@@ -27,19 +27,37 @@ Node *prepend(Node *head, int item){
     return newNode;
 }
 
+//this is my append function...
+Node *append(Node *head, int item){
+    Node *newNode = createNewNode(head, item);
+    if(head == NULL){
+        return newNode;
+    }
+    Node *current_node = head;
+    while(current_node->next != NULL){
+        current_node = current_node->next;
+    }
+    current_node->next = newNode;
+    return head;
+}
+
+//print linked list
+void print_linked_list(Node *head){
+    Node *currrent_node = head;
+    while(currrent_node->next != NULL){
+        printf("%d ", currrent_node->data);
+        currrent_node = currrent_node->next;
+    }
+}
+
 int main() {
-    Node *n1, *n2, *head, *n3, *n4;
+    Node *n1, *head;
     n1 = createNewNode(NULL, 10);
     head = n1;
     head = prepend(head, 20);
-    head = prepend(head, 30);
+  
 
-    n2 = head;
-    n3 = n2->next;
-    n4 = n3->next;
-    printf("%d ", n2->data);
-    printf("%d ", n3->data);
-    printf("%d ", n4->data);
+    print_linked_list(head);
 
 return 0;
 }
