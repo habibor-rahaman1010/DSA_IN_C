@@ -55,6 +55,48 @@ void print_list(Node *head){
     printf("\n");
 }
 
+
+//delete node in linked list...
+Node *removee_node(Node *head, Node *node){
+    if(node == head){
+        head = node->nxt;
+        head->prv = NULL;
+        free(node);
+        return head;
+    }
+    Node *prv_node = node->prv;
+    Node *nxt_node = node->nxt;
+
+    prv_node->nxt = nxt_node;
+    nxt_node->prv = prv_node;
+    free(node);
+    return head;
+}
+
+//delete node in linked list...
+Node *remove_node(Node *head, Node *node){
+    if(node == head){
+        if(node->nxt == NULL){ // If the head node is the only node in the linked list
+            free(node);
+            return NULL; // Return NULL to indicate an empty linked list
+        }
+        head = node->nxt;
+        head->prv = NULL;
+        free(node);
+        return head;
+    }
+    Node *prv_node = node->prv;
+    Node *nxt_node = node->nxt;
+
+    prv_node->nxt = nxt_node;
+    if(nxt_node != NULL){
+        nxt_node->prv = prv_node;
+    }
+    free(node);
+    return head;
+}
+
+
 int main() {
     Node *n1, *head;
 
@@ -63,6 +105,8 @@ int main() {
     head = prepend(head, 30);
     head = prepend(head, 40);
     head = append(head, 100);
+
+    remove_node(head, head->nxt);
 
     print_list(head);
 
